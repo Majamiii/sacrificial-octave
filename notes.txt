@@ -1,0 +1,15 @@
+Install Drivers:
+Windows: Download and install the Yamaha Steinberg USB Driver from the Official Yamaha Support Page. 
+Yamaha Steinberg USB Driver V2.0.3 for Windows 10/8.1/7 (32-bit/64-bit)
+https://usa.yamaha.com/products/musical_instruments/keyboards/portable_keyboards/psr-e363/downloads.html
+Note: The Steinberg driver is required because the keyboard sends both audio and MIDI; the standard MIDI-only driver may not work properly.
+
+Mac/iOS: These devices are typically "class compliant," meaning they should work immediately without manual driver installation.
+
+
+
+
+pokretanje programa:
+sudo apt-get install libasound2-dev librtmidi-dev
+go mod tidy
+go run .
