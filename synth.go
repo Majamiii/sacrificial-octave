@@ -28,14 +28,14 @@ var effectKeyMap = map[uint8]func() Filter{
 	84: func() Filter { return NewLowPassFilter(800, SampleRate) }, // C6
 	86: func() Filter { return NewDistortionFilter(6) },            // D6
 	88: func() Filter { return NewRingMod(110, SampleRate) },       // E6
-	89: func() Filter { return &BypassFilter{} },                   // F6  (explicit bypass)
+	96: func() Filter { return &BypassFilter{} },                   // F6  (explicit bypass)
 }
 
 var effectKeyNames = map[uint8]string{
 	84: "Low-Pass Filter",
 	86: "Distortion",
 	88: "Ring Modulator",
-	89: "Bypass",
+	96: "Bypass",
 }
 
 func isHighestOctave(note uint8) bool {

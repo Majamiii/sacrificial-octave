@@ -26,7 +26,7 @@ func main() {
 	fmt.Println("│    C6  (84) → Low-Pass Filter                        │")
 	fmt.Println("│    D6  (86) → Distortion                             │")
 	fmt.Println("│    E6  (88) → Ring Modulator                         │")
-	fmt.Println("│    F6  (89) → Bypass (no effect)                     │")
+	fmt.Println("│    C9  (96) → Bypass (no effect)                     │")
 	fmt.Println("│  Press the same key again to toggle OFF.             │")
 	fmt.Println("└──────────────────────────────────────────────────────┘")
 	fmt.Println()
@@ -66,7 +66,7 @@ func main() {
 	//player.SetBufferSize(2048)
 
 	if setter, ok := player.(oto.BufferSizeSetter); ok {
-		setter.SetBufferSize(4096) // Set to a specific byte size
+		setter.SetBufferSize(8192) // Set to a specific byte size
 	}
 
 	player.Play()

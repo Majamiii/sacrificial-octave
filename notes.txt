@@ -13,3 +13,80 @@ pokretanje programa:
 sudo apt-get install libasound2-dev librtmidi-dev
 go mod tidy
 go run .
+
+
+
+
+
+Blok 1: Osnove i "Prvi ton" (00:00 - 00:45)
+Cilj: Razumeti da je zvuk matematika.
+
+Teorija (5 min): Šta je zvuk u kompjuteru? Objasni Sample Rate (44.1kHz) i kako zvučnik pretvara brojeve u pokret membrane.
+
+Kod (20 min): Iskucajte onaj osnovni primer sa math.Sin.
+
+Fokusiraj se na Read metodu. To je "srce" koje pumpa brojeve.
+
+Objasni zašto float32 i zašto bajtovi (komunikacija sa hardverom).
+
+Zadatak za studente: Neka promene frekvenciju u kodu. Kako zvuči 100Hz, a kako 2000Hz?
+
+
+
+Blok 2: Polifonija i Akordi (00:45 - 01:30)
+Cilj: Shvatiti da se zvukovi mogu sabirati.
+
+Problem: Kako pustiti dva tona odjednom?
+
+Rešenje (Oto Players): Iskoristite pristup koji smo razvili – pravljenje više plejera nad jednim kontekstom.
+
+Teorija mixinga: Objasni zašto moramo smanjiti Volume (npr. na 0.2) kada sabiramo tonove da ne bi došlo do "pucanja" zvuka (Clipping).
+
+Zadatak: Neka studenti naprave funkciju koja svira dur akord (C, E, G).
+
+
+
+Blok 3: Različiti oblici talasa i "Prljavi" zvuk (01:30 - 02:15)
+Cilj: Transformacija čistog tona u "karakteristične" zvukove (8-bit, retro).
+
+Square Wave (Kvadratni talas): Izmeni math.Sin u Read metodi.
+
+Logika: Ako je sin > 0, vrati 1, inače vrati -1.
+
+Ovo zvuči kao stari GameBoy.
+
+Distorzija: Napravite dugme (ili parametar) koji množi signal i "seče" ga na granicama. To je najlakši filter za demonstraciju.
+
+
+
+
+Blok 4: MIDI i Interaktivnost (02:15 - 03:00+)
+Cilj: Povezivanje sa stvarnim svetom (Tvoj "Grand Finale").
+
+Uvođenje MIDI biblioteke: Instalirajte gomidi/midi/v2.
+
+Mapiranje klavijature:
+
+MIDI poruka NoteOn -> Pokreni novi oto.Player sa frekvencijom te note.
+
+MIDI poruka NoteOff -> Ugasi/Pauziraj taj plejer.
+
+"Žrtvovane" note:
+
+Napravi switch u MIDI handleru. Ako je pritisnuta nota C2, ona ne svira, već menja globalnu varijablu currentWaveform iz Sine u Square.
+
+Ako pritisnu D2, neka se aktivira "Distortion" mod.
+
+Kako da organizuješ fajlove za studente:
+Da bi bilo lakše, pripremi im template sa već instaliranim bibliotekama:
+
+main.go - Gde pišu logiku.
+
+oscillator.go - Gde se nalazi sineWave struktura i matematika.
+
+midi_map.go - Tabela gde piše koji MIDI broj je koja frekvencija (da ne gube vreme na fiziku i logaritme).
+
+
+
+Kraj radionice:
+Svako od njih pokuša da odsvira nešto na mojoj klavijaturi kroz svoj kod. To što su sami napisali "motor" koji pokreće taj zvuk je neverovatno moćan osećaj.
